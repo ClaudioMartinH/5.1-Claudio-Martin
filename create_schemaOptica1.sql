@@ -1,5 +1,3 @@
-CREATE SCHEMA opticaCulAmpolla;
-
 CREATE TABLE IF NOT EXISTS `OpticaCulAmpolla`.`address` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `street` VARCHAR(45) NOT NULL,
@@ -16,5 +14,11 @@ CREATE TABLE IF NOT EXISTS `OpticaCulAmpolla`.`frame` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `type` VARCHAR(45) NOT NULL,
   `color` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `OpticaCulAmpolla`.`employee` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;

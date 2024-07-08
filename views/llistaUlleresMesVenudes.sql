@@ -1,0 +1,1 @@
+SELECT supplierId FROM glasses WHERE id = 1;

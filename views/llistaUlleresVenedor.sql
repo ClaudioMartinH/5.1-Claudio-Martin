@@ -1,0 +1,1 @@
+SELECT glassesId FROM transactions where employeeId = 1;

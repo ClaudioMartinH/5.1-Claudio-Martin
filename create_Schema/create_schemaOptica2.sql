@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS `OpticaCulAmpolla`.`supplier` (
   `fax` INT(9) NOT NULL,
   `nif` VARCHAR(45) NOT NULL,
   `brand` VARCHAR(45) NOT NULL,
+  `address_Id` INT NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `address_id`
     FOREIGN KEY (`id`)

@@ -15,10 +15,10 @@ INSERT INTO frame (id, type, color)
 VALUES
 (1, "Pasta", "Blau"),
 (2, "Flotant", "Vermell"),
-(3, "Metal.lica", "Groc"),
+(3, "Metalica", "Groc"),
 (4, "Pasta", "Verd"),
 (5, "Flotant", "Negre"),
-(6, "Metal.lica", "Gris");
+(6, "Metalica", "Gris");
 
 INSERT INTO employee (id, name)
 VALUES
@@ -28,7 +28,7 @@ VALUES
 (4, "Marc Mato"),
 (5, "Luis Ibarz");
 
-INSERT INTO supplier (id, name, phone, fax, nif, brand, addressId)
+INSERT INTO supplier (id, name, phone, fax, nif, brand, address_Id)
 VALUES
 (1, "Buenver", 931112233, 932221133, "B65432109", "Oakley", 1),
 (2, "Regafas", 932223311, 933331133, "B65432110", "Oakley", 2),
@@ -61,7 +61,7 @@ VALUES
 (4, 85.95, "Dark", 01.50, 02.50, 4, 4, 4),
 (5, 55.95, "Dark", 02.50, 03.50, 5, 5, 5);
 
-INSERT INTO transactions (id, date, prize, glassesId, customerId, employeeId)
+INSERT INTO transaction (id, date, prize, glassesId, customerId, employeeId)
 VALUES 
 (1, "2024-06-06", 75.95, 1, 2, 1),
 (2, "2024-06-10", 65.95, 2, 1, 2),

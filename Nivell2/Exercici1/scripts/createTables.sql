@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `youtube`.`user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
-  `usrname` VARCHAR(45) NOT NULL,
+  `username` VARCHAR(45) NOT NULL,
   `birthdate` DATE NOT NULL,
   `gender` VARCHAR(45) NOT NULL,
   `country` VARCHAR(45) NOT NULL,
@@ -116,17 +116,17 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `youtube`.`dislike` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `datetime` DATETIME NOT NULL,
-  `Video-Id` INT NULL,
+  `idvideo` INT NULL,
   `comment_Id` INT NULL,
   `channel_Id` INT NULL,
   `user_Id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `video_Id_idx` (`Video-Id` ASC) VISIBLE,
+  INDEX `idvideo_idx` (`idvideo` ASC) VISIBLE,
   INDEX `comment_Id_idx` (`comment_Id` ASC) VISIBLE,
   INDEX `channel_Id_idx` (`channel_Id` ASC) VISIBLE,
   INDEX `user_Id_idx` (`user_Id` ASC) VISIBLE,
-  CONSTRAINT `Video-Id`
-    FOREIGN KEY (`Video-Id`)
+  CONSTRAINT `idvideo`
+    FOREIGN KEY (`idvideo`)
     REFERENCES `youtube`.`video` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
@@ -153,14 +153,14 @@ CREATE TABLE IF NOT EXISTS `youtube`.`user_has` (
   `channel` INT NULL,
   `playlist` INT NULL,
   `comment` INT NULL,
-  `like` INT NULL,
+  `likes` INT NULL,
   `dislike` INT NULL,
   PRIMARY KEY (`id`),
   INDEX `video_idx` (`video` ASC) VISIBLE,
   INDEX `channel_idx` (`channel` ASC) VISIBLE,
   INDEX `playlist_idx` (`playlist` ASC) VISIBLE,
   INDEX `comment_idx` (`comment` ASC) VISIBLE,
-  INDEX `like_idx` (`like` ASC) VISIBLE,
+  INDEX `likes_idx` (`likes` ASC) VISIBLE,
   INDEX `dislike_idx` (`dislike` ASC) VISIBLE,
   CONSTRAINT `video`
     FOREIGN KEY (`video`)
@@ -182,9 +182,9 @@ CREATE TABLE IF NOT EXISTS `youtube`.`user_has` (
     REFERENCES `youtube`.`comment` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `like`
-    FOREIGN KEY (`like`)
-    REFERENCES `youtube`.`like` (`id`)
+  CONSTRAINT `likes`
+    FOREIGN KEY (`likes`)
+    REFERENCES `youtube`.`likes` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `dislike`

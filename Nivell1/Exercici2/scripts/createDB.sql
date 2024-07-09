@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS pizzeria;
+
 USE pizzeria;
 
 CREATE TABLE IF NOT EXISTS `pizzeria`.`customer` (
@@ -14,7 +16,7 @@ ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `pizzeria`.`shop` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `city` VARCHAR(45) NOT NULL,
+  `city` ENUM("Barcelona", "Girona", "Tarragona", "Lleida") NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -27,7 +29,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `pizzeria`.`product` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
-  `typeOfProduct` VARCHAR(45) NOT NULL,
+  `typeOfProduct`ENUM("Pizza", "Hamburguesa", "Bebida") NOT NULL,
   `unitPrize` FLOAT NOT NULL,
   `id_productCategory` INT NULL,
   PRIMARY KEY (`id`),
@@ -44,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `pizzeria`.`employee` (
   `fullName` VARCHAR(45) NOT NULL,
   `nif` VARCHAR(45) NOT NULL,
   `phoneNumber` INT(9) NOT NULL,
-  `duty` VARCHAR(45) NOT NULL,
+  `duty` ENUM("Cocina", "Sala", "Delivery") NOT NULL,
   `id_shop` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `id_shop_idx` (`id_shop` ASC) VISIBLE,
@@ -71,7 +73,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `pizzeria`.`orders` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `date_time` DATETIME NOT NULL,
-  `orderType` VARCHAR(45) NOT NULL,
+  `orderType`ENUM("Delivery", "Local") NOT NULL,
   `shop_id` INT NOT NULL,
   `employee_id` INT NOT NULL,
   `id_delivery` INT NULL,

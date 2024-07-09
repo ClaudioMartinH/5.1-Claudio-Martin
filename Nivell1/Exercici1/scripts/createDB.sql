@@ -1,3 +1,6 @@
+CREATE DATABASE IF NOT EXISTS OpticaCulAmpolla;
+
+USE OpticaCulAmpolla;
 
 CREATE TABLE IF NOT EXISTS `OpticaCulAmpolla`.`address` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -13,7 +16,7 @@ ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `OpticaCulAmpolla`.`frame` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `type` VARCHAR(45) NOT NULL,
+  `type` ENUM("Pasta", "Metalica", "Flotant") NOT NULL,
   `color` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;

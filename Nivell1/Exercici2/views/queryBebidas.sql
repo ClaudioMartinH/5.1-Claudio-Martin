@@ -1,6 +1,6 @@
 SELECT
     s.city,
-    SUM(od.quantity) AS total_beverages_sold
+    SUM(od.quantity) AS total_drinks_sold
 FROM
     orderDetails od
     JOIN product p ON od.product_id = p.id

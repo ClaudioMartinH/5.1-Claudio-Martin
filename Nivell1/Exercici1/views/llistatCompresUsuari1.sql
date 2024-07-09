@@ -1,1 +1,1 @@
-SELECT * FROM transactions WHERE customerId = 1;
+SELECT * FROM transaction WHERE customerId = 1;

@@ -1,5 +1,3 @@
-CREATE DATABASE IF NOT EXISTS pizzeria;
-
 USE pizzeria;
 
 CREATE TABLE IF NOT EXISTS `pizzeria`.`customer` (

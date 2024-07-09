@@ -1,4 +1,3 @@
-CREATE SCHEMA opticaCulAmpolla;
 
 CREATE TABLE IF NOT EXISTS `OpticaCulAmpolla`.`address` (
   `id` INT NOT NULL AUTO_INCREMENT,

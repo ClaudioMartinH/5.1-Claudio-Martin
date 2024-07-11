@@ -150,16 +150,13 @@ VALUES
 (7, "Mecanica", "2024-01-01 12:06:00", 4, 6),
 (8, "DIY", "2024-01-01 12:07:00", 4, 6);
 
-INSERT INTO likes (id, datetime, video__Id, comment__Id, channel__Id, user__Id)
+INSERT INTO likes (datetime, video__Id, comment__Id, channel__Id, user__Id, typeOfReaction)
 VALUES
-(1, "2024-01-01 12:00:00", 1, NULL, NULL, 1),
-(2, "2024-01-01 12:01:00", 2, NULL, NULL, 2),
-(3, "2024-01-01 12:02:00", NULL, NULL, 1, 3),
-(4, "2024-01-01 12:03:00", NULL, 1, NULL, 4);
-
-INSERT INTO dislike (id, datetime, idvideo, comment_Id, channel_Id, user_Id)
-VALUES
-(1, "2024-01-01 12:00:00", 3, NULL, NULL, 1),
-(2, "2024-01-01 12:01:00", 4, NULL, NULL, 2),
-(3, "2024-01-01 12:02:00", NULL, NULL, 2, 3),
-(4, "2024-01-01 12:03:00", NULL, 3, NULL, 4);
+("2024-01-01 12:00:00", 1, NULL, NULL, 1, 'Like'),
+("2024-01-01 12:01:00", 2, NULL, NULL, 2, 'Like'),
+("2024-01-01 12:02:00", NULL, NULL, 1, 3, 'Like'),
+("2024-01-01 12:03:00", NULL, 1, NULL, 4, 'Like'),
+("2024-01-01 12:00:00", 3, NULL, NULL, 1, 'Dislike'),
+("2024-01-01 12:01:00", 4, NULL, NULL, 2, 'Dislike'),
+("2024-01-01 12:02:00", NULL, NULL, 2, 3, 'Dislike'),
+("2024-01-01 12:03:00", NULL, 3, NULL, 4, 'Dislike');

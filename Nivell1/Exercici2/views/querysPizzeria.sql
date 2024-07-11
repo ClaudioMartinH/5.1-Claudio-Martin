@@ -1,3 +1,8 @@
+-- Llista quantes comandes ha efectuat un determinat empleat/da.
+SELECT employee_Id, COUNT(*) AS num_orders
+FROM orders
+WHERE employee_Id = 2;
+-- Llista quants productes de tipus “Begudes”. s'han venut en una determinada localitat.
 SELECT
     s.city,
     SUM(od.quantity) AS total_drinks_sold

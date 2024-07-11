@@ -1,1 +1,0 @@
-SELECT * FROM transaction WHERE customerId = 1;

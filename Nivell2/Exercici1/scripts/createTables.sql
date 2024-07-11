@@ -1,5 +1,5 @@
+CREATE SCHEMA youtube;
 use youtube;
-
 CREATE TABLE IF NOT EXISTS `youtube`.`channel` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
@@ -80,48 +80,16 @@ CREATE TABLE IF NOT EXISTS `youtube`.`comment` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `youtube`.`likes` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `datetime` DATETIME NOT NULL,
-  `video__Id` INT NULL,
-  `comment__Id` INT NULL,
-  `channel__Id` INT NULL,
-  `user__Id` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `video__Id_idx` (`video__Id` ASC) VISIBLE,
-  INDEX `comment__Id_idx` (`comment__Id` ASC) VISIBLE,
-  INDEX `channel__Id_idx` (`channel__Id` ASC) VISIBLE,
-  INDEX `user__Id_idx` (`user__Id` ASC) VISIBLE,
-  CONSTRAINT `video__Id`
-    FOREIGN KEY (`video__Id`)
-    REFERENCES `youtube`.`video` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `comment__Id`
-    FOREIGN KEY (`comment__Id`)
-    REFERENCES `youtube`.`comment` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `channel__Id`
-    FOREIGN KEY (`channel__Id`)
-    REFERENCES `youtube`.`channel` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `user__Id`
-    FOREIGN KEY (`user__Id`)
-    REFERENCES `youtube`.`user` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-CREATE TABLE IF NOT EXISTS `youtube`.`dislike` (
+CREATE TABLE IF NOT EXISTS `youtube`.`reactions` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `datetime` DATETIME NOT NULL,
   `idvideo` INT NULL,
   `comment_Id` INT NULL,
   `channel_Id` INT NULL,
   `user_Id` INT NOT NULL,
+  `typeOfReaction` ENUM('Like', 'Dislike') NULL,
   PRIMARY KEY (`id`),
-  INDEX `idvideo_idx` (`idvideo` ASC) VISIBLE,
+  INDEX `video_Id_idx` (`idvideo` ASC) VISIBLE,
   INDEX `comment_Id_idx` (`comment_Id` ASC) VISIBLE,
   INDEX `channel_Id_idx` (`channel_Id` ASC) VISIBLE,
   INDEX `user_Id_idx` (`user_Id` ASC) VISIBLE,
@@ -146,22 +114,19 @@ CREATE TABLE IF NOT EXISTS `youtube`.`dislike` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
 CREATE TABLE IF NOT EXISTS `youtube`.`user_has` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `video` INT NULL,
   `channel` INT NULL,
   `playlist` INT NULL,
   `comment` INT NULL,
-  `likes` INT NULL,
-  `dislike` INT NULL,
+  `reactions_id` INT NULL,
   PRIMARY KEY (`id`),
   INDEX `video_idx` (`video` ASC) VISIBLE,
   INDEX `channel_idx` (`channel` ASC) VISIBLE,
   INDEX `playlist_idx` (`playlist` ASC) VISIBLE,
   INDEX `comment_idx` (`comment` ASC) VISIBLE,
-  INDEX `likes_idx` (`likes` ASC) VISIBLE,
-  INDEX `dislike_idx` (`dislike` ASC) VISIBLE,
+  INDEX `reactions_idx` (`reactions_id` ASC) VISIBLE,
   CONSTRAINT `video`
     FOREIGN KEY (`video`)
     REFERENCES `youtube`.`video` (`id`)
@@ -182,14 +147,9 @@ CREATE TABLE IF NOT EXISTS `youtube`.`user_has` (
     REFERENCES `youtube`.`comment` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `likes`
-    FOREIGN KEY (`likes`)
-    REFERENCES `youtube`.`likes` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `dislike`
-    FOREIGN KEY (`dislike`)
-    REFERENCES `youtube`.`dislike` (`id`)
+  CONSTRAINT `reactions_id`
+    FOREIGN KEY (`reactions_id`)
+    REFERENCES `youtube`.`reactions` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

@@ -75,19 +75,3 @@ Model senzill per a una versió reduïda de Spotify.
 
 **Nota:**
 Un cop creades les bases de dades, omplirem les taules amb dades de prova per tal de verificar que les relacions són correctes.
-
-## Requisits
-Per a verificar que el teu disseny és correcte, efectua les següents consultes i comprova que retornen resultats correctes.
-
-### Òptica:
-
-1. Llista el total de compres d’un client.
-2. Llista les diferents ulleres que ha venut un empleat durant un any.
-3. Llista els diferents proveïdors que han subministrat ulleres venudes amb èxit per l'òptica.
-
-### Pizzeria:
-
-1. Llista quants productes de tipus “Begudes” s'han venut en una determinada localitat.
-2. Llista quantes comandes ha efectuat un determinat empleat.
-
----
